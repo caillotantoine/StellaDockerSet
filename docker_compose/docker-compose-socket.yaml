@@ -1,0 +1,25 @@
+networks:
+  websocknet:
+
+services:
+  nodejs:
+    image: stella_vslam-viewer
+    container_name: stella_vslam-viewer
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    networks:
+      - websocknet
+
+  stella_vslam:
+    image: stella_vslam-socket
+    container_name: stella_vslam-socket
+    volumes:
+      - ../stella_data:/stella_data
+      - ../datasets:/datasets
+    networks:
+      - websocknet
+    depends_on:
+      - nodejs
+    stdin_open: true
+    tty: true

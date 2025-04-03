@@ -1,2 +1,8 @@
-socket_viewer
-stella_vslam
+socket_viewer/
+stella_vslam/
+
+datasets/*
+
+stella_data/output_data/*
+
+.DS_Store
