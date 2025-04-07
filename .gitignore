@@ -1,8 +1,10 @@
 socket_viewer/
 stella_vslam/
+stella_vslam_ros/
 
 datasets/*
 
 stella_data/output_data/*
 
 .DS_Store
+._*
