@@ -1,0 +1,30 @@
+networks:
+  websocknet:
+
+services:
+  nodejs:
+    image: stella_vslam-viewer
+    container_name: stella_vslam-viewer
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    networks:
+      - websocknet
+
+  stella_vslam:
+    image: stella_vslam-socket-ros
+    container_name: stella_vslam-socket-ros
+    volumes:
+      - ../stella_data:/stella_data
+      - ../datasets:/datasets
+    environment:
+      - "ROS_MASTER_URI=http://$HOSTNAME.local:11311"
+      - "ROS_HOSTNAME=$HOSTNAME.local"
+    networks:
+      - websocknet
+    # network_mode: "host"
+    depends_on:
+      - nodejs
+    stdin_open: true
+    tty: true
+    privileged: true
