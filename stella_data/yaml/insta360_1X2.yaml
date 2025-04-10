@@ -9,7 +9,7 @@ Camera:
   setup: "monocular"
   model: "equirectangular"
 
-  fps: 7
+  fps: 30
   cols: 2304
   rows: 1152
 
@@ -73,6 +73,6 @@ SocketPublisher:
 
 MarkerModel:
   type: "aruco"
-  width: 0.16
+  width: 0.26
   marker_size: 6
   max_markers: 250
