@@ -9,7 +9,7 @@ Camera:
   setup: "monocular"
   model: "equirectangular"
 
-  fps: 21
+  fps: 30
   cols: 2304
   rows: 1152
 
