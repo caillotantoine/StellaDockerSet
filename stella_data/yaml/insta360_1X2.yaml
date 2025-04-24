@@ -9,7 +9,7 @@ Camera:
   setup: "monocular"
   model: "equirectangular"
 
-  fps: 30
+  fps: 21
   cols: 2304
   rows: 1152
 
@@ -27,7 +27,7 @@ Camera:
 #=====================#
 
 Preprocessing:
-  min_size: 100
+  min_size: 200
 
 Relocalizer:
   search_neighbor: true
@@ -46,7 +46,7 @@ Feature:
   scale_factor: 1.5
   num_levels: 8
   ini_fast_threshold: 10
-  min_fast_threshold: 5
+  min_fast_threshold: 15 #5
   
 Tracking:
   enable_auto_relocalization: true
@@ -59,7 +59,7 @@ Tracking:
 Mapping:
   baseline_dist_thr_ratio: 0.02
   redundant_obs_ratio_thr: 0.5
-  num_covisibilities_for_landmark_generation: 5
+  num_covisibilities_for_landmark_generation: 10 #5
   num_covisibilities_for_landmark_fusion: 5
 
 #============================#

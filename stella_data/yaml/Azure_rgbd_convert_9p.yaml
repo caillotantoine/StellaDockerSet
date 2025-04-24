@@ -1,0 +1,75 @@
+# Omnidirectional model for images generated from RICOH THETA V
+
+#==============#
+# Camera Model #
+#==============#
+
+# Converted fx  fy  cx  cy same as factrory
+Camera:
+  name: "MIS Azure"
+  setup: "RGBD"
+  model: "perspective"
+
+  fx: 967.547607421875
+  fy: 967.4090576171875
+  cx: 1025.6026611328125
+  cy: 777.72021484375
+
+  k1: 0.111986
+  k2: -0.109815
+  k3: 0.0514529
+  p1: -1.52586e-06
+  p2: -0.000308827
+
+# k1 = 0.111986 k2 = -0.109815 p1 = -1.52586e-06 p2 = -0.000308827 k3 = 0.0514529
+# K: [967.547607421875, 0.0, 1025.6026611328125, 0.0, 967.4090576171875, 777.72021484375, 0.0, 0.0, 1.0]
+
+  fps: 15.0
+  rows: 1080
+  cols: 1920
+  focal_x_baseline: 40.0
+
+  color_order: "RGB"
+
+#=====================#
+# Tracking Parameters #
+#=====================#
+
+Preprocessing:
+  min_size: 400
+  depthmap_factor: 1000
+#================#
+# ORB Parameters #
+#================#
+
+Feature:
+  name: "ORB feature extraction setting"
+  scale_factor: 1.2
+  num_levels: 4
+  ini_fast_threshold: 20
+  min_fast_threshold: 15
+
+#====================#
+# Mapping Parameters #
+#====================#
+
+Mapping:
+  baseline_dist_thr_ratio: 0.02
+  redundant_obs_ratio_thr: 0.9
+  num_covisibilities_for_landmark_generation: 20
+  num_covisibilities_for_landmark_fusion: 20
+
+#============================#
+# SocketPublisher Parameters #
+#============================#
+
+# append this entry
+SocketPublisher:
+  server_uri: "http://nodejs:3000"
+  image_quality: 0.9
+
+MarkerModel:
+  type: "aruco"
+  width: 0.26
+  marker_size: 6
+  max_markers: 250

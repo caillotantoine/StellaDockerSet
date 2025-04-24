@@ -17,6 +17,7 @@ services:
     volumes:
       - ../stella_data:/stella_data
       - ../datasets:/datasets
+      - ../outputs:/outputs
     networks:
       - websocknet
     depends_on:

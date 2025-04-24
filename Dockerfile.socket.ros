@@ -131,7 +131,7 @@ RUN set -x && \
   apt-get update -y -qq && \
   : "install ROS packages" && \
   apt-get install -y -qq \
-    ros-${ROS_DISTRO}-desktop-full \
+    # ros-${ROS_DISTRO}-desktop-full \
     ros-${ROS_DISTRO}-image-transport \
     ros-${ROS_DISTRO}-image-transport-plugins \
     ros-${ROS_DISTRO}-perception \

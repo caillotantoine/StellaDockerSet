@@ -1,0 +1,60 @@
+# Run Stella VSLAM with Socket Viewer, A roscore, and a rosbag container.
+# Creates a full ROS 1 environement. 
+
+networks:
+  ros-network:
+    driver: bridge
+  websocknet:
+
+services:
+  nodejs:
+    image: stella_vslam-viewer
+    container_name: stella_vslam-viewer
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    networks:
+      - websocknet
+
+  roscore:
+    image: stella_vslam-socket-ros
+    container_name: stella_vslam-socket-ros-roscore
+    command: roscore
+    networks:
+      - ros-network
+
+  rosbag:
+    image: stella_vslam-socket-ros
+    container_name: stella_vslam-socket-ros-rosbag
+    environment:
+      - "ROS_MASTER_URI=http://roscore:11311"
+    command: bash
+    volumes:
+      - ../stella_data:/stella_data
+      - ../datasets:/datasets
+    depends_on:
+      - roscore
+    stdin_open: true
+    tty: true
+    privileged: true
+    networks:
+      - ros-network
+
+  stella_vslam:
+    image: stella_vslam-socket-ros
+    container_name: stella_vslam-socket-ros
+    volumes:
+      - ../stella_data:/stella_data
+      - ../outputs:/outputs
+    environment:
+      - "ROS_MASTER_URI=http://roscore:11311"
+    networks:
+      - websocknet
+      - ros-network
+    # network_mode: "host"
+    depends_on:
+      - nodejs
+      - roscore
+    stdin_open: true
+    tty: true
+    privileged: true

@@ -1,0 +1,76 @@
+# Omnidirectional model for images generated from RICOH THETA V
+
+#==============#
+# Camera Model #
+#==============#
+
+Camera:
+  name: "MIS Azure"
+  setup: "RGBD"
+  model: "perspective"
+
+  fx: 975.6052304
+  fy: 975.4081462
+  cx: 1031.9588998
+  cy: 776.1582652
+
+  k1: 0.1170477515
+  k2: -0.1128922358
+  k3: 0.04999746822
+  p1: 0.0003342679069
+  p2: 0.001791096261
+
+
+#fx = 975.6052304 fy = 975.4081462 u0 = 1031.9588998 v0 = 776.1582652
+#k1 = 0.1170477515	 k2 = -0.1128922358	  	 p1 = 0.0003342679069	 p2 = 0.001791096261 k3 = 0.04999746822
+
+  fps: 15.0
+  cols: 2048
+  rows: 1536
+  focal_x_baseline: 40.0
+
+  color_order: "RGB"
+
+#=====================#
+# Tracking Parameters #
+#=====================#
+
+Preprocessing:
+  min_size: 400
+  depthmap_factor: 1000
+#================#
+# ORB Parameters #
+#================#
+
+Feature:
+  name: "ORB feature extraction setting"
+  scale_factor: 1.2
+  num_levels: 4
+  ini_fast_threshold: 20
+  min_fast_threshold: 7
+
+#====================#
+# Mapping Parameters #
+#====================#
+
+Mapping:
+  baseline_dist_thr_ratio: 0.02
+  redundant_obs_ratio_thr: 0.9
+  num_covisibilities_for_landmark_generation: 20
+  num_covisibilities_for_landmark_fusion: 20
+
+#===========================#
+# PangolinViewer Parameters #
+#===========================#
+
+PangolinViewer:
+  keyframe_size: 0.06
+  keyframe_line_width: 1
+  graph_line_width: 1
+  point_size: 2
+  camera_size: 0.07
+  camera_line_width: 2
+  viewpoint_x: 0
+  viewpoint_y: -20
+  viewpoint_z: -0.1
+  viewpoint_f: 2800

@@ -1,3 +1,5 @@
+# Run Stella VSLAM with a Socket Viewer container. Ideal to play Stella VSLAM in an already existing ROS 1 environment..
+
 networks:
   websocknet:
 
@@ -17,6 +19,7 @@ services:
     volumes:
       - ../stella_data:/stella_data
       - ../datasets:/datasets
+      - ../outputs:/outputs
     environment:
       - "ROS_MASTER_URI=http://$HOSTNAME.local:11311"
       - "ROS_HOSTNAME=$HOSTNAME.local"
