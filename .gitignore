@@ -3,6 +3,7 @@ stella_vslam/
 stella_vslam_ros/
 
 datasets/*
+outputs/*
 
 stella_data/output_data/*
 
